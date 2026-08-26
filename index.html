@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Scam Safety는 어르신들이 흔한 사기를 알아보고 피할 수 있도록 쉬운 수업과 퀴즈를 제공합니다. 큰 글씨와 간단한 메뉴.">
+  <meta name="theme-color" content="#1e3a5f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Scam Safety – 사기로부터 안전하게</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="inner">
+      <div class="brand-row">
+        <div class="logo">
+          <img src="icons/logo-white.png" alt="" class="logo-mark" height="40" width="40">
+          <span class="logo-text">Scam Safety</span>
+        </div>
+        <button class="nav-home active" data-section="home" onclick="showSection('home')">홈</button>
+      </div>
+      <nav class="nav-main">
+        <button data-section="scams" onclick="showSection('scams')">수업</button>
+        <button data-section="tips" onclick="showSection('tips')">팁</button>
+        <button data-section="quiz" onclick="startQuiz()">퀴즈</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="section active">
+      <div class="hero">
+        <div class="hero-constellation" aria-hidden="true">
+          <img class="orbit-icon o1" src="icons/lesson-phone.png" alt="">
+          <img class="orbit-icon o2" src="icons/lesson-text.png" alt="">
+          <img class="orbit-icon o3" src="icons/lesson-email.png" alt="">
+          <img class="orbit-icon o4" src="icons/lesson-toll.png" alt="">
+          <img class="orbit-icon o5" src="icons/lesson-family.png" alt="">
+          <img class="orbit-icon o6" src="icons/lesson-tech.png" alt="">
+          <img class="orbit-icon o7" src="icons/lesson-romance.png" alt="">
+          <img class="orbit-icon o8" src="icons/lesson-prize.png" alt="">
+          <img class="hero-center-logo" src="icons/logo-color.png" alt="Scam Safety">
+        </div>
+        <h1>사기로부터 안전하게</h1>
+        <p>사기꾼들이 쓰는 수법을 쉽게 알아보는 수업으로, 나와 내 재산을 지키세요.</p>
+        <button class="btn btn-large" onclick="showSection('scams')">수업 시작</button>
+        <button class="btn btn-secondary btn-large" onclick="showSection('tips')">빠른 안전 팁</button>
+      </div>
+
+      <h2>배우게 될 내용</h2>
+      <ul class="checklist">
+        <li><span class="tip-icon"><img src="icons/lesson-phone.png" alt=""></span><span class="tip-text">전화·자동녹음 전화 — 모르는 번호는 받지 않아도 됩니다</span></li>
+        <li><span class="tip-icon"><img src="icons/lesson-text.png" alt=""></span><span class="tip-text">가짜 문자 (택배, 은행, 통행료 등)</span></li>
+        <li><span class="tip-icon"><img src="icons/lesson-email.png" alt=""></span><span class="tip-text">진짜처럼 보이는 가짜 이메일</span></li>
+        <li><span class="tip-icon"><img src="icons/lesson-toll.png" alt=""></span><span class="tip-text">통행료·교통 범칙금 사기</span></li>
+        <li><span class="tip-icon"><img src="icons/lesson-tech.png" alt=""></span><span class="tip-text">기술 지원 팝업 사기</span></li>
+        <li><span class="tip-icon"><img src="icons/lesson-family.png" alt=""></span><span class="tip-text">가족 긴급 상황 / “손주” 사기</span></li>
+        <li><span class="tip-icon"><img src="icons/lesson-romance.png" alt=""></span><span class="tip-text">연애·온라인 친구 사기</span></li>
+        <li><span class="tip-icon"><img src="icons/lesson-prize.png" alt=""></span><span class="tip-text">가짜 당첨·복권 사기</span></li>
+      </ul>
+
+      <div class="btn-row">
+        <button class="btn btn-large" onclick="showSection('scams')">수업 보기</button>
+        <button class="btn btn-secondary btn-large" onclick="startQuiz()">퀴즈 풀기</button>
+      </div>
+    </section>
+
+    <!-- LESSONS LIST -->
+    <section id="scams" class="section">
+      <h1>사기 예방 수업</h1>
+      <p class="lead">관심 있는 주제를 골라 단계별로 배워 보세요.</p>
+
+      <div class="card-grid">
+        <article class="card" onclick="openLesson('phone')" tabindex="0" role="button">
+          <div class="card-visual phone"><div class="card-icon-circle"><img src="icons/lesson-phone.png" alt=""></div></div>
+          <div class="card-body">
+            <h3>전화 사기</h3>
+            <p>모르는 번호, 자동녹음 전화, 가짜 음성메시지. 받지 않아도 됩니다.</p>
+            <span class="btn">배우기</span>
+          </div>
+        </article>
+
+        <article class="card" onclick="openLesson('texts')" tabindex="0" role="button">
+          <div class="card-visual phish"><div class="card-icon-circle"><img src="icons/lesson-text.png" alt=""></div></div>
+          <div class="card-body">
+            <h3>가짜 문자</h3>
+            <p>택배 보관, 은행 알림 등 위험한 링크가 있는 급한 문자.</p>
+            <span class="btn">배우기</span>
+          </div>
+        </article>
+
+        <article class="card" onclick="openLesson('emails')" tabindex="0" role="button">
+          <div class="card-visual tech"><div class="card-icon-circle"><img src="icons/lesson-email.png" alt=""></div></div>
+          <div class="card-body">
+            <h3>가짜 이메일</h3>
+            <p>은행·회사처럼 보이지만 링크가 함정인 메일.</p>
+            <span class="btn">배우기</span>
+          </div>
+        </article>
+
+        <article class="card" onclick="openLesson('toll')" tabindex="0" role="button">
+          <div class="card-visual family"><div class="card-icon-circle"><img src="icons/lesson-toll.png" alt=""></div></div>
+          <div class="card-body">
+            <h3>통행료·교통 요금</h3>
+            <p>“미납 통행료 — 지금 내지 않으면 과태료.” 대부분 가짜 문자입니다.</p>
+            <span class="btn">배우기</span>
+          </div>
+        </article>
+
+        <article class="card" onclick="openLesson('family')" tabindex="0" role="button">
+          <div class="card-visual family"><div class="card-icon-circle"><img src="icons/lesson-family.png" alt=""></div></div>
+          <div class="card-body">
+            <h3>가족 긴급 상황</h3>
+            <p>“큰일 났어요 — 돈 보내고 아무에게도 말하지 마세요.” AI 목소리도 있습니다.</p>
+            <span class="btn">배우기</span>
+          </div>
+        </article>
+
+        <article class="card" onclick="openLesson('tech')" tabindex="0" role="button">
+          <div class="card-visual tech"><div class="card-icon-circle"><img src="icons/lesson-tech.png" alt=""></div></div>
+          <div class="card-body">
+            <h3>기술 지원 사기</h3>
+            <p>컴퓨터에 바이러스가 있다고 겁주는 팝업. 원격 접속이나 결제를 요구합니다.</p>
+            <span class="btn">배우기</span>
+          </div>
+        </article>
+
+        <article class="card" onclick="openLesson('romance')" tabindex="0" role="button">
+          <div class="card-visual romance"><div class="card-icon-circle"><img src="icons/lesson-romance.png" alt=""></div></div>
+          <div class="card-body">
+            <h3>연애·온라인 친구</h3>
+            <p>온라인에서 신뢰를 쌓은 뒤 긴급 상황이라며 돈을 요구합니다.</p>
+            <span class="btn">배우기</span>
+          </div>
+        </article>
+
+        <article class="card" onclick="openLesson('prize')" tabindex="0" role="button">
+          <div class="card-visual prize"><div class="card-icon-circle"><img src="icons/lesson-prize.png" alt=""></div></div>
+          <div class="card-body">
+            <h3>당첨·복권 사기</h3>
+            <p>“축하드립니다!” — 먼저 수수료를 상품권이나 송금으로 내라고 합니다.</p>
+            <span class="btn">배우기</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="showSection('tips')">모든 안전 팁 보기</button>
+        <button class="btn" onclick="startQuiz()">퀴즈 풀기</button>
+      </div>
+    </section>
+
+    <!-- LESSON PLAYER -->
+    <section id="lesson" class="section">
+      <div class="lesson">
+        <div class="lesson-header">
+          <h2 id="lesson-title">수업</h2>
+        </div>
+        <div class="stage accent-teal">
+          <div id="stage-mock" class="stage-mock" style="display:none"></div>
+          <div id="stage-ill" class="stage-illustration" aria-hidden="true">🛡️</div>
+          <p id="stage-text" class="stage-text"></p>
+          <p id="stage-sub" class="stage-sub"></p>
+        </div>
+        <div class="lesson-controls">
+          <button class="btn btn-secondary" id="btn-prev" onclick="prevStep()">← 이전</button>
+          <div class="progress-dots" id="progress-dots"></div>
+          <button class="btn" id="btn-next" onclick="nextStep()">다음 →</button>
+        </div>
+      </div>
+      <p class="text-center mt-1">
+        <button class="btn btn-secondary" onclick="showSection('scams')">수업 목록으로</button>
+      </p>
+    </section>
+
+    <!-- TIPS -->
+    <section id="tips" class="section">
+      <h1>빠른 안전 팁</h1>
+      <p class="lead">급하거나 “너무 좋은” 제안이 오면 이 점을 기억하세요.</p>
+
+      <div class="alert alert-warning">
+        <strong>서두르지 마세요. 사기꾼은 당신이 빨리 행동하기를 바랍니다.</strong>
+        진짜 회사와 기관은 시간을 줍니다. 서두르게 만드는 것은 위험 신호입니다.
+      </div>
+
+      <h2>항상 기억하세요</h2>
+      <ul class="checklist">
+        <li><span class="tip-icon"><img src="icons/tip-hangup.svg" alt=""></span><span class="tip-text"><strong>끊어 버리세요.</strong> 돈이나 개인정보를 요구하는 갑작스러운 전화는 끊으세요.</span></li>
+        <li><span class="tip-icon"><img src="icons/tip-callback.svg" alt=""></span><span class="tip-text"><strong>이미 알고 있는 번호로만 다시 전화하세요</strong> (고지서, 명세서, 회사 공식 웹사이트). 수상한 전화·문자·이메일·음성메시지에 나온 번호로 전화하지 마세요 — 그 번호는 사기꾼 것입니다.</span></li>
+        <li><span class="tip-icon"><img src="icons/tip-family.svg" alt=""></span><span class="tip-text"><strong>가족 암호를 정하세요.</strong> “곤란한” 친척이 암호를 말하지 못하면 사기입니다.</span></li>
+        <li><span class="tip-icon"><img src="icons/tip-links.svg" alt=""></span><span class="tip-text"><strong>예상치 못한 이메일·문자의 링크를 누르지 마세요.</strong> 주소를 직접 입력하세요.</span></li>
+        <li><span class="tip-icon"><img src="icons/tip-remote.svg" alt=""></span><span class="tip-text"><strong>원격 접속을 허용하지 마세요.</strong> 먼저 연락해 온 사람에게 컴퓨터 제어권을 주지 마세요.</span></li>
+        <li><span class="tip-icon"><img src="icons/tip-talk.svg" alt=""></span><span class="tip-text"><strong>믿을 수 있는 사람과 먼저 상의하세요.</strong> 처음 만난 사람에게 돈을 보내기 전에 이야기하세요.</span></li>
+        <li><span class="tip-icon"><img src="icons/tip-gov.svg" alt=""></span><span class="tip-text"><strong>정부 기관</strong>은 전화로 즉시 납부나 체포를 위협하지 않습니다.</span></li>
+      </ul>
+
+      <h2>먼저 연락해 온 사람에게는 이렇게 결제하지 마세요</h2>
+      <ul class="checklist">
+        <li><span class="tip-icon"><img src="icons/tip-gift.svg" alt=""></span><span class="tip-text"><strong>상품권</strong> (문화상품권, 구글 플레이, 아마존 등)</span></li>
+        <li><span class="tip-icon"><img src="icons/tip-crypto.svg" alt=""></span><span class="tip-text"><strong>암호화폐</strong> (비트코인 등)</span></li>
+        <li><span class="tip-icon"><img src="icons/tip-wire.svg" alt=""></span><span class="tip-text"><strong>송금</strong> (해외 송금 등)</span></li>
+        <li><span class="tip-icon"><img src="icons/tip-payapp.svg" alt=""></span><span class="tip-text"><strong>결제 앱</strong>으로 직접 만나지 않은 사람에게 보내기</span></li>
+      </ul>
+
+      <div class="btn-row">
+        <button class="btn btn-large" onclick="showSection('scams')">수업 가기</button>
+        <button class="btn btn-secondary btn-large" onclick="startQuiz()">퀴즈 풀기</button>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="section">
+      <h1>사기 예방 퀴즈</h1>
+      <p class="lead" id="quiz-progress">문제 1 / 5</p>
+      <div class="quiz-card">
+        <div id="quiz-visual" class="quiz-visual"></div>
+        <div id="quiz-question" class="quiz-question">불러오는 중…</div>
+        <div id="quiz-options" class="quiz-options"></div>
+        <div id="quiz-feedback" class="quiz-feedback"></div>
+        <button id="quiz-next-btn" class="btn btn-large mt-1 hidden" onclick="nextQuestion()">다음 문제 →</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="install-banner" class="install-banner">
+    <p>Scam Safety를 홈 화면에 추가하면 오프라인에서도 쉽게 사용할 수 있습니다.</p>
+    <button class="btn" onclick="installApp()">설치</button>
+    <button class="btn btn-secondary" onclick="dismissInstall()">나중에</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
