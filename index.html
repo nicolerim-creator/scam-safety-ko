@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="Scam Safety는 어르신들이 흔한 사기를 알아보고 피할 수 있도록 쉬운 수업과 퀴즈를 제공합니다. 큰 글씨와 간단한 메뉴.">
   
-  <!-- Social Media & Link Sharing Tags -->
   <meta property="og:title" content="Scam Safety – 사기로부터 안전하게">
   <meta property="og:description" content="Scam Safety는 어르신들이 흔한 사기를 알아보고 피할 수 있도록 쉬운 수업과 퀴즈를 제공합니다.">
   <meta property="og:image" content="https://nicolerim-creator.github.io/scam-safety-ko/og-image.png">
@@ -13,7 +12,6 @@
   <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
   
-  <!-- Twitter / X Preview -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://nicolerim-creator.github.io/scam-safety-ko/og-image.png">
 
@@ -45,7 +43,6 @@
   </header>
 
   <main>
-    <!-- HOME -->
     <section id="home" class="section active">
       <div class="hero">
         <div class="hero-constellation" aria-hidden="true">
@@ -83,13 +80,12 @@
       </div>
     </section>
 
-    <!-- LESSONS LIST -->
     <section id="scams" class="section">
       <h1>사기 예방 수업</h1>
       <p class="lead">관심 있는 주제를 골라 단계별로 배워 보세요.</p>
 
       <div class="card-grid">
-        <article class="card" onclick="openLesson('phone')" tabindex="0" role="button">
+        <article class="card" onclick="openLessonWithAudio('phone', 'audio/phone.mp3')" tabindex="0" role="button">
           <div class="card-visual phone"><div class="card-icon-circle"><img src="icons/lesson-phone.png" alt=""></div></div>
           <div class="card-body">
             <h3>전화 사기</h3>
@@ -98,7 +94,7 @@
           </div>
         </article>
 
-        <article class="card" onclick="openLesson('texts')" tabindex="0" role="button">
+        <article class="card" onclick="openLessonWithAudio('texts', 'audio/texts.mp3')" tabindex="0" role="button">
           <div class="card-visual phish"><div class="card-icon-circle"><img src="icons/lesson-text.png" alt=""></div></div>
           <div class="card-body">
             <h3>가짜 문자</h3>
@@ -107,7 +103,7 @@
           </div>
         </article>
 
-        <article class="card" onclick="openLesson('emails')" tabindex="0" role="button">
+        <article class="card" onclick="openLessonWithAudio('emails', 'audio/emails.mp3')" tabindex="0" role="button">
           <div class="card-visual tech"><div class="card-icon-circle"><img src="icons/lesson-email.png" alt=""></div></div>
           <div class="card-body">
             <h3>가짜 이메일</h3>
@@ -116,7 +112,7 @@
           </div>
         </article>
 
-        <article class="card" onclick="openLesson('toll')" tabindex="0" role="button">
+        <article class="card" onclick="openLessonWithAudio('toll', 'audio/toll.mp3')" tabindex="0" role="button">
           <div class="card-visual family"><div class="card-icon-circle"><img src="icons/lesson-toll.png" alt=""></div></div>
           <div class="card-body">
             <h3>통행료·교통 요금</h3>
@@ -125,7 +121,7 @@
           </div>
         </article>
 
-        <article class="card" onclick="openLesson('family')" tabindex="0" role="button">
+        <article class="card" onclick="openLessonWithAudio('family', 'audio/family.mp3')" tabindex="0" role="button">
           <div class="card-visual family"><div class="card-icon-circle"><img src="icons/lesson-family.png" alt=""></div></div>
           <div class="card-body">
             <h3>가족 긴급 상황</h3>
@@ -134,7 +130,7 @@
           </div>
         </article>
 
-        <article class="card" onclick="openLesson('tech')" tabindex="0" role="button">
+        <article class="card" onclick="openLessonWithAudio('tech', 'audio/tech.mp3')" tabindex="0" role="button">
           <div class="card-visual tech"><div class="card-icon-circle"><img src="icons/lesson-tech.png" alt=""></div></div>
           <div class="card-body">
             <h3>기술 지원 사기</h3>
@@ -143,7 +139,7 @@
           </div>
         </article>
 
-        <article class="card" onclick="openLesson('romance')" tabindex="0" role="button">
+        <article class="card" onclick="openLessonWithAudio('romance', 'audio/romance.mp3')" tabindex="0" role="button">
           <div class="card-visual romance"><div class="card-icon-circle"><img src="icons/lesson-romance.png" alt=""></div></div>
           <div class="card-body">
             <h3>연애·온라인 친구</h3>
@@ -152,7 +148,7 @@
           </div>
         </article>
 
-        <article class="card" onclick="openLesson('prize')" tabindex="0" role="button">
+        <article class="card" onclick="openLessonWithAudio('prize', 'audio/prize.mp3')" tabindex="0" role="button">
           <div class="card-visual prize"><div class="card-icon-circle"><img src="icons/lesson-prize.png" alt=""></div></div>
           <div class="card-body">
             <h3>당첨·복권 사기</h3>
@@ -168,23 +164,18 @@
       </div>
     </section>
 
-    <!-- LESSON PLAYER WITH SENIOR AUDIO -->
     <section id="lesson" class="section">
       <div class="lesson">
         <div class="lesson-header">
           <h2 id="lesson-title">수업</h2>
         </div>
         
-        <!-- Senior Audio Bar -->
-        <div style="display: flex; gap: 10px; justify-content: center; margin: 15px 0 20px 0;">
-          <button onclick="readCurrentStage()" 
-                  style="background-color: #0052CC; color: white; font-size: 20px; font-weight: bold; padding: 14px 24px; border: none; border-radius: 50px; cursor: pointer; flex: 1; max-width: 240px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            🔊 음성으로 듣기
-          </button>
-          <button onclick="stopKoreanAudio()" 
-                  style="background-color: #6B7280; color: white; font-size: 20px; font-weight: bold; padding: 14px 20px; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            ⏹️ 멈춤
-          </button>
+        <div style="text-align: center; margin: 15px 0 20px 0; background: #f0f4f8; padding: 16px; border-radius: 12px; border: 1px solid #d0dbe5;">
+          <p style="font-size: 19px; font-weight: bold; margin-bottom: 10px; color: #1e3a5f;">🔊 음성 설명 듣기</p>
+          <audio id="typecast-player" controls style="width: 100%; max-width: 400px; height: 50px;">
+            <source id="audio-source" src="" type="audio/mpeg">
+            사용하시는 브라우저는 오디오 재생을 지원하지 않습니다.
+          </audio>
         </div>
 
         <div class="stage accent-teal">
@@ -200,11 +191,10 @@
         </div>
       </div>
       <p class="text-center mt-1">
-        <button class="btn btn-secondary" onclick="showSection('scams'); stopKoreanAudio();">수업 목록으로</button>
+        <button class="btn btn-secondary" onclick="stopAudio(); showSection('scams');">수업 목록으로</button>
       </p>
     </section>
 
-    <!-- TIPS -->
     <section id="tips" class="section">
       <h1>빠른 안전 팁</h1>
       <p class="lead">급하거나 “너무 좋은” 제안이 오면 이 점을 기억하세요.</p>
@@ -239,7 +229,6 @@
       </div>
     </section>
 
-    <!-- QUIZ -->
     <section id="quiz" class="section">
       <h1>사기 예방 퀴즈</h1>
       <p class="lead" id="quiz-progress">문제 1 / 5</p>
@@ -261,47 +250,27 @@
 
   <script src="app.js"></script>
 
-  <!-- KOREAN AUDIO ENGINE FOR SENIORS -->
   <script>
-    function speakText(text) {
-      if (!('speechSynthesis' in window)) return;
-      
-      window.speechSynthesis.cancel(); // Stop active speech
-
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'ko-KR';
-      utterance.rate = 1.0;  // Natural speaking rate
-      utterance.pitch = 1.0;
-
-      // Select highest quality available voice
-      const voices = window.speechSynthesis.getVoices();
-      const naturalVoice = voices.find(v => v.lang.includes('ko') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Siri') || v.name.includes('Premium')));
-      
-      if (naturalVoice) {
-        utterance.voice = naturalVoice;
+    function openLessonWithAudio(lessonKey, audioFilePath) {
+      if (typeof openLesson === 'function') {
+        openLesson(lessonKey);
       }
-
-      window.speechSynthesis.speak(utterance);
-    }
-
-    function readCurrentStage() {
-      const title = document.getElementById('lesson-title')?.innerText || '';
-      const mainText = document.getElementById('stage-text')?.innerText || '';
-      const subText = document.getElementById('stage-sub')?.innerText || '';
-
-      const fullTextToRead = `${title}. ${mainText}. ${subText}`;
-      speakText(fullTextToRead);
-    }
-
-    function stopKoreanAudio() {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
+      
+      const player = document.getElementById('typecast-player');
+      const source = document.getElementById('audio-source');
+      
+      if (player && source) {
+        source.src = audioFilePath;
+        player.load();
       }
     }
 
-    // Preload voices
-    if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
-      speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    function stopAudio() {
+      const player = document.getElementById('typecast-player');
+      if (player) {
+        player.pause();
+        player.currentTime = 0;
+      }
     }
   </script>
 </body>
