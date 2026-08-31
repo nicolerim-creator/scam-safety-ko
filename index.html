@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="Scam Safety는 어르신들이 흔한 사기를 알아보고 피할 수 있도록 쉬운 수업과 퀴즈를 제공합니다. 큰 글씨와 간단한 메뉴.">
   
+  <!-- Social Media & Link Sharing Tags -->
   <meta property="og:title" content="Scam Safety – 사기로부터 안전하게">
   <meta property="og:description" content="Scam Safety는 어르신들이 흔한 사기를 알아보고 피할 수 있도록 쉬운 수업과 퀴즈를 제공합니다.">
   <meta property="og:image" content="https://nicolerim-creator.github.io/scam-safety-ko/og-image.png">
@@ -12,6 +13,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
   
+  <!-- Twitter / X Preview -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://nicolerim-creator.github.io/scam-safety-ko/og-image.png">
 
@@ -23,6 +25,40 @@
   <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/icon-192.svg">
   <link rel="stylesheet" href="styles.css">
+  
+  <!-- Mobile UI Override for Stacked Centered Buttons -->
+  <style>
+    .lesson-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .lesson-controls #btn-next {
+      order: 1;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .lesson-controls .progress-dots {
+      order: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin: 4px 0;
+    }
+
+    .lesson-controls #btn-prev {
+      order: 3;
+      width: 100%;
+      max-width: 320px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -43,6 +79,7 @@
   </header>
 
   <main>
+    <!-- HOME -->
     <section id="home" class="section active">
       <div class="hero">
         <div class="hero-constellation" aria-hidden="true">
@@ -80,6 +117,7 @@
       </div>
     </section>
 
+    <!-- LESSONS LIST -->
     <section id="scams" class="section">
       <h1>사기 예방 수업</h1>
       <p class="lead">관심 있는 주제를 골라 단계별로 배워 보세요.</p>
@@ -164,12 +202,14 @@
       </div>
     </section>
 
+    <!-- LESSON PLAYER WITH STACKED CONTROL BUTTONS -->
     <section id="lesson" class="section">
       <div class="lesson">
         <div class="lesson-header">
           <h2 id="lesson-title">수업</h2>
         </div>
         
+        <!-- Typecast MP3 Player Box -->
         <div style="text-align: center; margin: 15px 0 20px 0; background: #f0f4f8; padding: 16px; border-radius: 12px; border: 1px solid #d0dbe5;">
           <p style="font-size: 19px; font-weight: bold; margin-bottom: 10px; color: #1e3a5f;">🔊 음성 설명 듣기</p>
           <audio id="typecast-player" controls style="width: 100%; max-width: 400px; height: 50px;">
@@ -184,10 +224,12 @@
           <p id="stage-text" class="stage-text"></p>
           <p id="stage-sub" class="stage-sub"></p>
         </div>
+
+        <!-- Vertically Stacked Controls for Mobile -->
         <div class="lesson-controls">
-          <button class="btn btn-secondary" id="btn-prev" onclick="prevStep()">← 이전</button>
-          <div class="progress-dots" id="progress-dots"></div>
           <button class="btn" id="btn-next" onclick="nextStep()">다음 →</button>
+          <div class="progress-dots" id="progress-dots"></div>
+          <button class="btn btn-secondary" id="btn-prev" onclick="prevStep()">← 이전</button>
         </div>
       </div>
       <p class="text-center mt-1">
@@ -195,6 +237,7 @@
       </p>
     </section>
 
+    <!-- TIPS -->
     <section id="tips" class="section">
       <h1>빠른 안전 팁</h1>
       <p class="lead">급하거나 “너무 좋은” 제안이 오면 이 점을 기억하세요.</p>
@@ -229,6 +272,7 @@
       </div>
     </section>
 
+    <!-- QUIZ -->
     <section id="quiz" class="section">
       <h1>사기 예방 퀴즈</h1>
       <p class="lead" id="quiz-progress">문제 1 / 5</p>
@@ -250,6 +294,7 @@
 
   <script src="app.js"></script>
 
+  <!-- TYPECAST AUDIO INTEGRATION SCRIPT -->
   <script>
     function openLessonWithAudio(lessonKey, audioFilePath) {
       if (typeof openLesson === 'function') {
