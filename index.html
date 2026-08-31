@@ -4,23 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="Scam Safety는 어르신들이 흔한 사기를 알아보고 피할 수 있도록 쉬운 수업과 퀴즈를 제공합니다. 큰 글씨와 간단한 메뉴.">
-  <meta name="theme-color" content="#1e3a5f">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>Scam Safety – 사기로부터 안전하게</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="icons/icon-192.svg">
-  <link rel="stylesheet" href="styles.css">
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Scam Safety는 어르신들이 흔한 사기를 알아보고 피할 수 있도록 쉬운 수업과 퀴즈를 제공합니다. 큰 글씨와 간단한 메뉴.">
   
   <!-- Social Media & Link Sharing Tags -->
   <meta property="og:title" content="Scam Safety – 사기로부터 안전하게">
   <meta property="og:description" content="Scam Safety는 어르신들이 흔한 사기를 알아보고 피할 수 있도록 쉬운 수업과 퀴즈를 제공합니다.">
   <meta property="og:image" content="https://nicolerim-creator.github.io/scam-safety-ko/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
   
   <!-- Twitter / X Preview -->
@@ -35,7 +25,6 @@
   <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/icon-192.svg">
   <link rel="stylesheet" href="styles.css">
-</head>
 </head>
 <body>
   <header>
@@ -179,12 +168,25 @@
       </div>
     </section>
 
-    <!-- LESSON PLAYER -->
+    <!-- LESSON PLAYER WITH SENIOR AUDIO -->
     <section id="lesson" class="section">
       <div class="lesson">
         <div class="lesson-header">
           <h2 id="lesson-title">수업</h2>
         </div>
+        
+        <!-- Senior Audio Bar -->
+        <div style="display: flex; gap: 10px; justify-content: center; margin: 15px 0 20px 0;">
+          <button onclick="readCurrentStage()" 
+                  style="background-color: #0052CC; color: white; font-size: 20px; font-weight: bold; padding: 14px 24px; border: none; border-radius: 50px; cursor: pointer; flex: 1; max-width: 240px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            🔊 음성으로 듣기
+          </button>
+          <button onclick="stopKoreanAudio()" 
+                  style="background-color: #6B7280; color: white; font-size: 20px; font-weight: bold; padding: 14px 20px; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            ⏹️ 멈춤
+          </button>
+        </div>
+
         <div class="stage accent-teal">
           <div id="stage-mock" class="stage-mock" style="display:none"></div>
           <div id="stage-ill" class="stage-illustration" aria-hidden="true">🛡️</div>
@@ -198,7 +200,7 @@
         </div>
       </div>
       <p class="text-center mt-1">
-        <button class="btn btn-secondary" onclick="showSection('scams')">수업 목록으로</button>
+        <button class="btn btn-secondary" onclick="showSection('scams'); stopKoreanAudio();">수업 목록으로</button>
       </p>
     </section>
 
@@ -258,5 +260,49 @@
   </div>
 
   <script src="app.js"></script>
+
+  <!-- KOREAN AUDIO ENGINE FOR SENIORS -->
+  <script>
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) return;
+      
+      window.speechSynthesis.cancel(); // Stop active speech
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'ko-KR';
+      utterance.rate = 1.0;  // Natural speaking rate
+      utterance.pitch = 1.0;
+
+      // Select highest quality available voice
+      const voices = window.speechSynthesis.getVoices();
+      const naturalVoice = voices.find(v => v.lang.includes('ko') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Siri') || v.name.includes('Premium')));
+      
+      if (naturalVoice) {
+        utterance.voice = naturalVoice;
+      }
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function readCurrentStage() {
+      const title = document.getElementById('lesson-title')?.innerText || '';
+      const mainText = document.getElementById('stage-text')?.innerText || '';
+      const subText = document.getElementById('stage-sub')?.innerText || '';
+
+      const fullTextToRead = `${title}. ${mainText}. ${subText}`;
+      speakText(fullTextToRead);
+    }
+
+    function stopKoreanAudio() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    // Preload voices
+    if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    }
+  </script>
 </body>
 </html>
